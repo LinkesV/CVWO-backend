@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     if @user
       if @user.authenticate(params[:password_digest])
         token = encode_token(user_id: @user.id)
-        cookies.signed[:jwt] = {value:  token, httponly: true, expires: 1.hour.from_now}
+        cookies.signed[:jwt] = {value:  token, httponly: true, expires: 1.hour.from_now,  same_site: :none}
         render json: {user:@user, login:true, token:token}
       else
         render json: {message: "Wrong Password", login:false}
