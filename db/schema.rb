@@ -11,13 +11,16 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_01_22_095705) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.string "username"
     t.string "body"
     t.integer "userid"
     t.integer "postid"
-    t.integer "user_id", null: false
-    t.integer "forum_thread_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "forum_thread_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["forum_thread_id"], name: "index_comments_on_forum_thread_id"
@@ -30,7 +33,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_22_095705) do
     t.string "category"
     t.string "username"
     t.integer "userid"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_forum_threads_on_user_id"
@@ -41,7 +44,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_22_095705) do
     t.string "category"
     t.string "username"
     t.integer "userid"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "body"
