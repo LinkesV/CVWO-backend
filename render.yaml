@@ -1,7 +1,7 @@
 databases:
-  - name: postgres
-    databaseName: forum
-    user: postgres
+  - name: mysite
+    databaseName: mysite
+    user: mysite
     plan: free
 
 services:
